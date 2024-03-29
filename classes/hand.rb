@@ -10,6 +10,7 @@ class Hand
     @cards = cards
   end
 
+
   def evaluate
     return :four_of_a_kind if four_of_a_kind?
     return :full_house if full_house?
@@ -20,6 +21,10 @@ class Hand
     return :pair if pair?
     :high_card
 
+  end
+
+  def discard(indices)
+    indices.each { |index| @cards.delete_at(index) }
   end
 
   private
