@@ -11,10 +11,35 @@ RSpec.describe Hand do
     end
   end
 
-  describe "#discard" do
-    it "removes the specified cards from the hand" do
-      hand.discard([0, 2, 4])
-      expect(hand.cards).to eq([cards[1], cards[3]])
+  describe "#evaluate" do
+    context "when the hand is a four of a kind" do
+      it "returns :four_of_a_kind" do
+        hand = Hand.new([
+          Card.new('Hearts', '10'),
+          Card.new('Diamonds', '10'),
+          Card.new('Clubs', '10'),
+          Card.new('Spades', '10'),
+          Card.new('Hearts', 'A')
+        ])
+        expect(hand.evaluate).to eq(:four_of_a_kind)
+      end
     end
+
+    context "when the hand is a full house" do
+      it "returns :full_house" do
+        hand = Hand.new([
+          Card.new('Hearts', '10'),
+          Card.new('Diamonds', '10'),
+          Card.new('Clubs', '10'),
+          Card.new('Spades', 'A'),
+          Card.new('Hearts', 'A')
+        ])
+        expect(hand.evaluate).to eq(:full_house)
+      end
+    end
+
+
   end
+
+
 end

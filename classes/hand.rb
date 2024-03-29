@@ -11,7 +11,6 @@ class Hand
   end
 
   def evaluate
-    return :straight_flush if straight? && flush?
     return :four_of_a_kind if four_of_a_kind?
     return :full_house if full_house?
     return :flush if flush?
@@ -21,10 +20,6 @@ class Hand
     return :pair if pair?
     :high_card
 
-  end
-
-  def discard(indices)
-    indices.each { |index| @cards.delete_at(index) }
   end
 
   private
