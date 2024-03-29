@@ -1,4 +1,4 @@
-# spec/card_spec.rb
+
 require_relative '../classes/card'
 
 RSpec.describe Card do
