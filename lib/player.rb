@@ -1,11 +1,12 @@
 
 
 class Player
-  attr_accessor  :hand, :pot
+  attr_accessor  :hand, :pot, :chips
 
-  def initialize(hand = nil, pot = 100)
+  def initialize(hand = nil, pot = 100, chips = 100)
     @hand = hand
     @pot = pot
+    @chips = chips
   end
 
 
@@ -20,11 +21,13 @@ class Player
 
   def see(current_bet)
     # Player chooses to match the current bet
-    @pot -= current_bet
+    @chips -= current_bet
+    @pot += current_bet
   end
 
   def raise_bet(amount)
     # Player raises the current bet by the specified amount
-    @pot -= amount
+    @chips -= amount
+    @pot += amount
   end
 end

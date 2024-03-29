@@ -34,7 +34,7 @@ RSpec.describe Player do
     it "reduces player's pot by the current bet amount" do
       current_bet = 20
       player.see(current_bet)
-      expect(player.pot).to eq(80)
+      expect(player.chips).to eq(80)
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe Player do
     it "reduces player's pot by the specified amount" do
       amount = 30
       player.raise_bet(amount)
-      expect(player.pot).to eq(70)
+      expect(player.chips).to eq(70)
     end
   end
 end

@@ -6,12 +6,13 @@ require_relative 'player'
 
 
 class Game
-  attr_reader :deck, :players, :pot
+  attr_reader :deck, :players, :pot, :chips
 
   def initialize(num_players) #initialize gameplay deal cards and chips
     @deck = Deck.new
     @players = Array.new(num_players) { Player.new }
-    @pot = 100
+    @pot = 0
+    @chips = 100
   end
 
   def deal_cards #deal each player 5 cards
@@ -31,7 +32,7 @@ class Game
     current_bet = 0
     @players.each do |player|
       puts "Current pot: #{@pot}"
-      puts "Player #{player} has #{@pot - current_bet} chips left"
+      puts "Player #{player} has #{@chips - current_bet} chips left"
       puts "Enter your action (fold, see, raise): "
       action = gets.chomp.downcase
       case action
@@ -44,6 +45,7 @@ class Game
         amount = gets.chomp.to_i
         player.raise_bet(amount)
         current_bet += amount
+        @pot += current_bet
       else
         puts "Invalid action. Please try again."
         redo
@@ -59,16 +61,11 @@ class Game
   end
 
   def start
-    loop do
-      deal_cards
-      discard_phase
-      betting_round
-      showdown
-
-      puts "Do you want to play another round? (yes/no)"
-      answer = gets.chomp.downcase
-      break if answer == 'no'
-    end
+    deal_cards
+    betting_round
+    discard_phase
+    betting_round
+    showdown
   end
 
   # Get the number of players from user input
