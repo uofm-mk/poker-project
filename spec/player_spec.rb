@@ -1,5 +1,5 @@
 
-require_relative '../classes/player'
+require_relative '../lib/player'
 
 RSpec.describe Player do
   let(:hand) { double("Hand") }

@@ -1,5 +1,5 @@
 
-require_relative '../classes/deck'
+require_relative '../lib/deck'
 
 RSpec.describe Deck do
   describe "#initialize" do

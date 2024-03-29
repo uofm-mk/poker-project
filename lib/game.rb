@@ -59,10 +59,16 @@ class Game
   end
 
   def start
-    deal_cards
-    discard_phase
-    betting_round
-    showdown
+    loop do
+      deal_cards
+      discard_phase
+      betting_round
+      showdown
+
+      puts "Do you want to play another round? (yes/no)"
+      answer = gets.chomp.downcase
+      break if answer == 'no'
+    end
   end
 
   # Get the number of players from user input

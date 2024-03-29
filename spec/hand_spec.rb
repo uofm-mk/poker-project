@@ -1,5 +1,5 @@
 
-require_relative '../classes/hand'
+require_relative '../lib/hand'
 
 RSpec.describe Hand do
   let(:cards) { [Card.new('Hearts', '2'), Card.new('Diamonds', '4'), Card.new('Clubs', '6'), Card.new('Spades', '8'), Card.new('Hearts', '10')] }
