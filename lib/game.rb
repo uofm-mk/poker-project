@@ -70,11 +70,11 @@ class Game
 
   # Get the number of players from user input
     print "Enter the number of players: "
-num_players = gets.chomp.to_i
+    num_players = gets.chomp.to_i
 
   # Validate input
   if num_players < 2 || num_players > 4
-    puts "Invalid number of players. Please enter a number between 2 and 10."
+    puts "Invalid number of players. Please enter a number between 2 and 4."
     exit
   end
 
